@@ -1,0 +1,7 @@
+node_modules/
+.env
+*.log
+*.bak
+data/
+*.db
+*.sqlite

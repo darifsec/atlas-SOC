@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SOC Dashboard</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <h1>SOC Dashboard</h1>
+    </div>
+
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-tab="alerts">Alerts</button>
+      <button class="tab" data-tab="devices">Devices</button>
+      <button class="tab" data-tab="assistant">Assistant</button>
+    </nav>
+
+    <div class="topbar-actions">
+      <div class="health" id="health">
+        <span class="dot" data-svc="wazuh"></span> Wazuh
+      </div>
+      <span class="user-chip" id="userChip" hidden></span>
+      <button id="logoutBtn" class="btn btn-ghost">Log out</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Alerts panel ===== -->
+    <section id="panel-alerts" class="panel">
+      <div class="summary">
+        <div class="summary-card critical">
+          <span class="summary-count" id="countCritical">0</span>
+          <span class="summary-label">Critical</span>
+        </div>
+        <div class="summary-card high">
+          <span class="summary-count" id="countHigh">0</span>
+          <span class="summary-label">High</span>
+        </div>
+        <div class="summary-card medium">
+          <span class="summary-count" id="countMedium">0</span>
+          <span class="summary-label">Medium</span>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="filters" id="filters">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="critical">Critical</button>
+          <button class="filter-chip" data-filter="high">High</button>
+          <button class="filter-chip" data-filter="medium">Medium</button>
+        </div>
+        <div class="toolbar-right">
+          <span class="last-updated" id="lastUpdated"></span>
+          <button id="refreshBtn" class="btn btn-ghost" title="Refresh now">⟳ Refresh</button>
+        </div>
+      </div>
+
+      <div id="alertList" class="alert-list">
+        <div class="empty-state">Loading alerts…</div>
+      </div>
+    </section>
+
+    <!-- ===== Devices panel ===== -->
+    <section id="panel-devices" class="panel" hidden>
+      <div class="devices-toolbar">
+        <h2>Devices</h2>
+        <button id="addDeviceBtn" class="btn btn-primary" data-admin-only hidden>+ Add device</button>
+      </div>
+
+      <div class="add-device-form-wrap" id="addDeviceFormWrap" hidden>
+        <form id="addDeviceForm" class="add-device-form">
+          <input type="text" id="devName" placeholder="Device name" required />
+          <input type="text" id="devIp" placeholder="IP address" required />
+          <input type="text" id="devOs" placeholder="OS (optional)" />
+          <button type="submit" class="btn btn-primary">Add &amp; register</button>
+          <button type="button" id="cancelAddDevice" class="btn btn-ghost">Cancel</button>
+        </form>
+        <div class="form-warnings" id="addDeviceWarnings" hidden></div>
+      </div>
+
+      <div id="deviceList" class="device-list">
+        <div class="empty-state">Loading devices…</div>
+      </div>
+    </section>
+
+    <!-- ===== Assistant (placeholder) panel ===== -->
+    <section id="panel-assistant" class="panel" hidden>
+      <div class="assistant-placeholder">
+        <h2>Assistant</h2>
+        <p class="assistant-sub">A chat assistant will live here in a future update.</p>
+        <div class="assistant-box">
+          <div class="assistant-messages">
+            <div class="assistant-empty">No conversation yet.</div>
+          </div>
+          <div class="assistant-input-row">
+            <input type="text" placeholder="Coming soon…" disabled />
+            <button class="btn btn-primary" disabled>Send</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

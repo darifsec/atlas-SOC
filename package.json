@@ -1,0 +1,19 @@
+{
+  "name": "wazuh-openvas-dashboard",
+  "version": "1.0.0",
+  "description": "Friendly dashboard: Wazuh alerts, device inventory with automatic Wazuh/OpenVAS enrollment, and role-based auth",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "create-user": "node scripts/create-user.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "xml2js": "^0.6.2"
+  }
+}
