@@ -258,6 +258,7 @@ app.get('/api/health', async (req, res) => {
   res.json(out);
 });
 
-app.listen(PORT, () => {
-  console.log(`Dashboard running at http://localhost:${PORT}`);
+const port = Number(process.env.PORT) || 3000;
+app.listen(port, '127.0.0.1', function () {
+  console.log('Dashboard running at http://127.0.0.1:' + port);
 });
